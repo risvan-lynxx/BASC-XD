@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: NEZUKO-V2
+    name: BRISTO-XD
     env: node
     branch: main
-    repo: https://github.com/godzenitsu/NEZUKO-V2.git
+    repo: https://github.com/risvan-lynxx/BASC-XD.git
     buildCommand: npm install
     startCommand: npm start
     plan: free
@@ -12,13 +12,13 @@ services:
       - key: SESSION_ID
         sync: false
       - key: BOT_INFO
-        value: Qᴜᴇᴇɴ-Nᴇᴢᴜᴋᴏ;Gᴏᴅ-Zᴇɴɪᴛꜱᴜ;https://graph.org/file/3879cf1910f65bd8457d7.jpg
+        value: 𝙱𝚁𝙸𝚂𝚃𝙾;𝙻𝚈𝙽𝚇;https://files.catbox.moe/yvt6ld.png
       - key: ALWAYS_ONLINE
         value: true
       - key: AUTO_STATUS_VIEWS
         value: true
       - key: AUDIO_DATA
-        value: Gᴏᴅ-Zᴇɴɪᴛꜱᴜ;Qᴜᴇᴇɴ-Nᴇᴢᴜᴋᴏ;https://graph.org/file/3879cf1910f65bd8457d7.jpg
+        value: 𝙻𝚈𝙽𝚇;𝙱𝚁𝙸𝚂𝚃𝙾 𝚇𝙳;https://files.catbox.moe/yvt6ld.png
       - key: PREFIX
         value: ^
       - key: WORK_TYPE
@@ -26,11 +26,11 @@ services:
       - key: SERVER
         value: render
       - key: CAPTION
-        value: 𝐍𝐄𝐙𝐔𝐊𝐎 𝐌𝐃🌈
+        value: 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🤍
       - key: STICKER_DATA
-        value: 𝘇𝗲𝗻𝗶𝘁𝘀𝘂;𝗻𝗲𝘇𝘂𝗸𝗼
+        value: Lynx;bristo
       - key: SUDO
-        value: 917025673121
+        value: 918138898059
       - key: SERVERURL
         value:
       - key: DATABASE_URL
