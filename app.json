@@ -1,15 +1,15 @@
 {
-  "name": "𝐍𝐄𝐙𝐔𝐊𝐎 𝐌𝐃🦋",
-  "description": "NEZUKO-MD Multi Device whatsapp bot",
-  "logo": "https://i.imgur.com/imOAWEN.jpeg",
+  "name": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🦋",
+  "description": "BRISTO-XD Multi Device whatsapp bot",
+  "logo": "https://files.catbox.moe/yvt6ld.png",
   "keywords": ["whatsapp"],
-  "repository": "https://github.com/godzenitsu/NEZUKO-MD-BOT",
-  "website": "https://queen-nezuko-web.onrender.com/",
-  "success_url": "https://github.com/godzenitsu/NEZUKO-MD-BOT",
+  "repository": "https://github.com/risvan-lynxx/BASC-XD",
+  "website": "https://github.com/risvan-lynxx/BASC-XD",
+  "success_url": "https://github.com/risvan-lynxx0https://github.com/risvan-lynx0x/BASC-XD0/BRISTO-XD",
   "stack": "container",
   "env": {
     "SESSION_ID": {
-      "description": "put ur nezuko session id",
+      "description": "put ur bristo session id",
       "required": true
     },
     "LOGS": {
@@ -19,22 +19,22 @@
      "AUDIO_DATA": {
       "description": "audio data , title;artist;image url",
       "required": "false",
-      "value": "✡∕ 𝚭𝚵𝚴𝚰𝚻𝐒𝐔 𝐆𝚯𝐃⺀톞🍓;𝐍𝐄𝐙𝐔𝐊𝐎-𝐌𝐃;https://i.imgur.com/o3AEXEj.jpeg"
+      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
      },
      "CAPTION": {
       "description": "enter your media caption",
       "required": "false",
-      "value": "𝐍𝐄𝐙𝐔𝐊𝐎-𝐌𝐃🦋"
+      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🦋"
     },
        "STICKER_DATA": {
-      "description": "Sticker pack name, eg : 𝐍𝐄𝐙𝐔𝐊𝐎 𝐌𝐃;𝐆𝐎𝐃 𝐖𝐈𝐙𝐙𝐊𝐈𝐃",
+      "description": "Sticker pack name, eg : 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐆𝐎𝐃 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃",
       "required": "false",
-      "value": "𝐍𝐄𝐙𝐔𝐊𝐎;✡∕ 𝚭𝚵𝚴𝚰𝚻𝐒𝐔 𝐆𝚯𝐃⺀톞🍓"
+      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐋𝐲𝐧𝐱"
     },
        "BOT_INFO": {
       "description": "Bot info : botname;ownername;imageurl - image or video",
       "required": "false",
-      "value": "𝐍𝐄𝐙𝐔𝐊𝐎 𝐌𝐃;✡∕ 𝚭𝚵𝚴𝚰𝚻𝐒𝐔 𝐆𝚯𝐃⺀톞🍓;https://i.imgur.com/imOAWEN.jpeg"
+      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
     },
      "ALWAYS_ONLINE": {
       "description": "Bot online online : true",
@@ -42,7 +42,7 @@
       "value": "false"
     },
     "SUDO": {
-      "description": "add your bot number here for run NEZUKO-MD🦋",
+      "description": "add your bot number here for run BRISTO-XD🦋",
       "required": false
     },
     "WORK_TYPE": {
@@ -73,4 +73,4 @@
       {
       "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
       }]
-  }
+}
