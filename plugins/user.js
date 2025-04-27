@@ -20,53 +20,56 @@ const fs = require("fs");
 const { PluginDB, installPlugin } = require("../lib/database/plugins");
 
 command(
+    {
+        pattern: "ping",
+        fromMe: isPrivate,
+        desc: "To check ping",
+        type: "user",
+    },
+    async (message, match, client) => {
+        const start = new Date().getTime();
+      let { key } = await message.sendMessage(`*Ping*`);
+        const end = new Date().getTime();
+var speed = end - start;
+ 
+await new Promise(t => setTimeout(t,0))
+         await message.client.sendMessage(message.jid,{text:`*Pong*
+${speed} *ms*` , edit: key});
+});
+
+command(
   {
-    pattern: "ping",
+    pattern: "list",
     fromMe: isPrivate,
-    desc: "To check ping",
+    desc: "Show All Commands",
     type: "user",
+    dontAddCommandList: true,
   },
-  async (message, match, client) => {
-    // React with 📡 emoji
-    if (typeof message.react === "function") {
-      await message.react("📡");
-    } else if (typeof message.sendReaction === "function") {
-      await message.sendReaction("📡");
-    } else {
-      try {
-        await message.client.sendMessage(message.chat || message.jid, {
-          react: { text: "📡", key: message.key }
-        });
-      } catch (e) {
-        console.error("Failed to send reaction:", e.message);
+  async (message, match, { prefix }) => {
+    let menu = `╭───────┈┫「 *𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐋𝐢𝐬𝐭* 」┣┈────♡`;
+    menu += `\n│\n`;
+
+    let cmnd = [];
+    let cmd, desc;
+    plugins.commands.map((command) => {
+      if (command.pattern) {
+        cmd = command.pattern.toString().split(/\W+/)[1];
       }
-    }
+      desc = command.desc || false;
 
-    const start = new Date().getTime();
-    await message.sendMessage(`*❬ 𝙲𝙷𝙴𝙲𝙺𝙸𝙽𝙶 𝙻𝙰𝚃𝙴𝙽𝙲𝚈 ❭*`);
-    const end = new Date().getTime();
-    const speed = end - start;
-
-    const contentText = `*𝙻𝙰𝚃𝙴𝙽𝙲𝚈!* 📡\n${speed} *𝙼𝚂*`;
-
-    // Reply to user with verified style
-    return await message.client.sendMessage(message.jid, {
-      text: contentText,
-      contextInfo: {
-        mentionedJid: [message.sender],
-        externalAdReply: {
-          title: "QUEEN-NEZUKO",
-          body: "⬇️ 𝙿𝙸𝙽𝙶 𝚁𝙴𝚂𝚄𝙻𝚃",
-          mediaType: 1,
-          showAdAttribution: true,
-          renderLargerThumbnail: false,
-          thumbnailUrl: "https://jerryapi.vercel.app/Fs97Yu.jpg",
-          sourceUrl: "https://github.com/Dinkenser12/Nezuko-kamado"
-        }
+      if (!command.dontAddCommandList && cmd !== undefined) {
+        cmnd.push({ cmd, desc });
       }
-    }, { quoted: message }); // <== This makes it a REPLY
-  }
-);
+    });
+    cmnd.sort();
+    cmnd.forEach(({ cmd, desc }, num) => {
+      menu += `│  ${(num += 1)}. *${cmd.trim()}*`;
+      if (desc) menu += `\n│  Use: \`\`\`${desc}\`\`\``;
+      menu += `\n│\n`;
+    });
+    menu += `╰───────┈┫「 ${config.BOT_INFO.split(";")[0]} 」┣┈────♡`;
+    return await message.reply(message.jid, { text: (tiny(menu)) })
+})
 
 /* Copyright (C) 2022 X-Electra.
 Licensed under the  GPL-3.0 License;
@@ -200,41 +203,6 @@ command(
   }
 );
 
-
-
-command(
-  {
-    pattern: "list",
-    fromMe: isPrivate,
-    desc: "Show All Commands",
-    type: "user",
-    dontAddCommandList: true,
-  },
-  async (message, match, { prefix }) => {
-    let menu = `╭──────────────────┈⊷`;
-    menu += `\n│\n`;
-
-    let cmnd = [];
-    let cmd, desc;
-    plugins.commands.map((command) => {
-      if (command.pattern) {
-        cmd = command.pattern.toString().split(/\W+/)[1];
-      }
-      desc = command.desc || false;
-
-      if (!command.dontAddCommandList && cmd !== undefined) {
-        cmnd.push({ cmd, desc });
-      }
-    });
-    cmnd.sort();
-    cmnd.forEach(({ cmd, desc }, num) => {
-      menu += `│  ${(num += 1)}. *${cmd.trim()}*`;
-      if (desc) menu += `\n│  Use: \`\`\`${desc}\`\`\``;
-      menu += `\n│\n`;
-    });
-    menu += `╰──────────────────┈⊷`;
-    return await message.reply(message.jid, { text: (tiny(menu)) })
-})
 
 
 command(
