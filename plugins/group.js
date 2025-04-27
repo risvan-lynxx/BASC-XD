@@ -155,7 +155,7 @@ command(
     const { participants } = await message.client.groupMetadata(message.jid);
     let teks = "";
     for (let mem of participants) {
-      teks += `☼ @${mem.id.split("@")[0]}\n`;
+      teks += `➛ @${mem.id.split("@")[0]}\n`;
     }
     message.sendMessage(teks.trim(), {
       mentions: participants.map((a) => a.id),
