@@ -89,7 +89,7 @@ async function Zenox() {
     const { connection, lastDisconnect } = s;
 
     if (connection === "connecting") {
-      console.log("nezuko\nVerifying Session...");
+      console.log("bristo\nVerifying Session...");
     }
 
     if (connection === "close" && lastDisconnect?.error?.output?.statusCode !== 401) {
