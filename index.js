@@ -98,7 +98,7 @@ async function Zenox() {
     }
 
     if (connection === "open") {
-      console.log("Nezuko Connected To Whatsapp ✅\nLoading Plugins 🛠️");
+      console.log("Bristo Connected To Whatsapp ✅\nLoading Plugins 🛠️");
 
       try {
         let plugins = await PluginDB.findAll();
@@ -129,7 +129,7 @@ async function Zenox() {
       console.log("Plugins Loaded ✅");
 
       const readMore = String.fromCharCode(8206).repeat(4001);
-      const str = `*𝙽𝙴𝚉𝚄𝙺𝙾 𝚂𝚃𝙰𝚁𝚃𝙴𝙳* ${readMore}\n\n\n*𝚅𝙴𝚁𝚂𝙸𝙾𝙽*   : *${require("./package.json").version}* \n*𝙿𝙻𝚄𝙶𝙸𝙽𝚂*  : *${events.commands.length}* \n*𝙼𝙾𝙳𝙴*  : *${config.WORK_TYPE}* \n*𝙷𝙰𝙽𝙳𝙻𝙴𝚁*  : *${config.HANDLERS}*`;
+      const str = `*ʙʀɪᴀᴛᴏ ꜱᴛᴀʀᴛᴇᴅ* ${readMore}\n\n\n*𝚅𝙴𝚁𝚂𝙸𝙾𝙽*   : *${require("./package.json").version}* \n*𝙿𝙻𝚄𝙶𝙸𝙽𝚂*  : *${events.commands.length}* \n*𝙼𝙾𝙳𝙴*  : *${config.WORK_TYPE}* \n*𝙷𝙰𝙽𝙳𝙻𝙴𝚁*  : *${config.HANDLERS}*`;
 
       if (conn.user?.id) {
         conn.sendMessage(conn.user.id, { text: str });
