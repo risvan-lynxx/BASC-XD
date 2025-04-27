@@ -1,103 +1,72 @@
+const { command, isPrivate } = require("../lib");
 const axios = require("axios");
 const fs = require("fs");
-const os = require("os");
-const path = require("path");
-const { command, isPrivate, blackVideo } = require("../lib");
-const GITHUB_TOKEN = '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';
-const GITHUB_USERNAME = 'mksir12';
-const GITHUB_REPO = 'jerryapii';
-const GITHUB_BRANCH = 'main';
-const VERCEL_DOMAIN = 'https://jerryapi.vercel.app';
+const FormData = require("form-data");
 
-function makeid(length = 6) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-}
-
-async function react(message, emoji) {
-  if (message.key && message.client?.sendMessage) {
-    await message.client.sendMessage(message.jid, {
-      react: {
-        text: emoji,
-        key: message.key,
-      },
-    });
-  }
-}
-
-command({
-  pattern: "url",
-  fromMe: isPrivate,
-  desc: "📤 Upload media to GitHub + Vercel (image, video, gif, or audio)",
-  type: "tool"
-}, async (message, match, m) => {
-  const quoted = message.reply_message;
-
-  if (!quoted) {
-    await react(message, "❌");
-    return message.reply("❌ *Reply to an image, video, gif, or audio first.*");
-  }
-
-  await react(message, "♻️");
-
-  try {
-    const mime = quoted.mimetype || quoted.mtype || "";
-
-    if (!mime || (!mime.includes("image") && !mime.includes("video") && !mime.includes("audio"))) {
-      await react(message, "❌");
-      return message.reply("⚠️ *Reply to a valid media file (image, video, gif, or audio).*");
+command(
+  {
+    pattern: "url",
+    fromMe: isPrivate,
+    desc: "Uploads image/video/audio and returns URL",
+    type: "misc",
+  },
+  async (message, match, m, client) => {
+    if (!m.quoted) {
+      return await message.sendMessage("**Reply to an image, video, or audio!**");
     }
 
-    const raw = await m.quoted.download();
-    let filename = "", filePath = "";
+    console.log("Quoted Message:", m.quoted);
 
-    if (mime.includes("audio")) {
-      const videoBuffer = await blackVideo(raw);
-      filename = `${makeid()}.mp4`;
-      filePath = path.join(os.tmpdir(), filename);
-      fs.writeFileSync(filePath, videoBuffer);
-    } else if (mime.includes("video") || mime.includes("gif")) {
-      filename = `${makeid()}.mp4`;
-      filePath = path.join(os.tmpdir(), filename);
-      fs.writeFileSync(filePath, raw);
-    } else if (mime.includes("image")) {
-      filename = `${makeid()}.jpg`;
-      filePath = path.join(os.tmpdir(), filename);
-      fs.writeFileSync(filePath, raw);
-    } else {
-      await react(message, "❌");
-      return message.reply("⚠️ *Unsupported media type.*");
-    }
+    try {
+      let filePath;
+      let fileType;
 
-    const base64Content = fs.readFileSync(filePath, { encoding: "base64" });
-
-    const githubApiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${filename}`;
-
-    await axios.put(
-      githubApiUrl,
-      {
-        message: `upload ${filename}`,
-        content: base64Content,
-        branch: GITHUB_BRANCH
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          "Content-Type": "application/json",
-          "User-Agent": "Zenox-uploader"
+      if (m.quoted.message.imageMessage) {
+        filePath = "./dldImg.jpg";
+        fileType = "image/jpeg";
+      } else if (m.quoted.message.videoMessage) {
+        filePath = "./dldVideo.mp4";
+        fileType = "video/mp4";
+      } else if (m.quoted.message.audioMessage) {
+        if (m.quoted.duration > 90) {
+          return await message.sendMessage("**Audio too large. Try below 90 seconds!**");
         }
+        filePath = "./audio.mp3";
+        fileType = "audio/mp3";
+      } else {
+        return await message.sendMessage("**Unsupported file type!**");
       }
-    );
 
-    await react(message, "✅");
-    await message.reply(`✅ *Success!*\n📂 URL: ${VERCEL_DOMAIN}/${filename}`);
-    fs.unlinkSync(filePath);
-  } catch (error) {
-    console.error("Upload Error:", error.response?.data || error.message);
-    await react(message, "❌");
-    await message.reply(`❌ *Error:* ${error.response?.data?.message || error.message}`);
+      // Download the file
+      fs.writeFileSync(filePath, await m.quoted.download());
+
+      // Upload to Catbox
+      let formData = new FormData();
+      formData.append("reqtype", "fileupload");
+      formData.append("fileToUpload", fs.createReadStream(filePath), {
+        filename: filePath.split("/").pop(),
+        contentType: fileType,
+      });
+
+      let res = await axios.post("https://catbox.moe/user/api.php", formData, {
+        headers: formData.getHeaders(),
+      });
+
+      let uploadedUrl = res.data.trim();
+
+      if (!uploadedUrl) {
+        return await message.sendMessage("**Failed to upload file!**");
+      }
+
+      // Send the uploaded URL as text with quoted message
+      await client.sendMessage(
+        message.jid,
+        { text: uploadedUrl },
+        { quoted: message }
+      );
+    } catch (err) {
+      console.error("Error:", err);
+      return await message.sendMessage("**An error occurred!**");
+    }
   }
-});
-
-// credits to oggy @, mksir12
-// copyright nezuko 2025
+);
