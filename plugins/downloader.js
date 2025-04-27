@@ -25,75 +25,51 @@ const isValidInstaUrl = (url) => {
 
 // Instagram media downloader
 command(
-  {
-    pattern: "insta",
-    fromMe: isPrivate,
-    desc: "Instagram media downloader - download images and videos from Instagram",
-    type: "downloader"
-  },
-  async (message, match, client) => {
-    const url = match || message.quoted?.text;
-    if (!url) {
-      await react(message, "⚠️");
-      return await message.reply("❌ *Please provide a valid Instagram URL.*");
-    }
-
-    if (!isValidInstaUrl(url)) {
-      await react(message, "⚠️");
-      return await message.reply("❌ *Invalid Instagram URL format.*");
-    }
-
-    await react(message, "♻️");
-
-    try {
-      const res = await axios.get(
-        `https://oggy-api.vercel.app/insta?url=${encodeURIComponent(url)}`,
-        {
-          timeout: 10000,
-          headers: {
-            "User-Agent": "ZenoxBot/1.0"
-          }
-        }
-      );
-
-      const data = res.data?.data;
-
-      if (!data || data.length === 0) {
-        await react(message, "❌");
-        return await message.reply("⚠️ *No media found or the post may be private.*");
-      }
-
-      const supportedTypes = ["image", "video"];
-
-      for (const media of data) {
-        if (!supportedTypes.includes(media.type)) {
-          continue;
+    {
+        pattern: "insta",
+        fromMe: isPrivate,
+        desc: "Download Instagram videos",
+        type: "downloader",
+    },
+    async (message, match) => {
+        if (!match) {
+            return await message.reply("*_Please provide an Instagram video link_*");
         }
 
-        await message.sendFromUrl(media.url, {
-          quoted: message,
-          type: media.type
-        });
-      }
+        try {
+            const api = `https://viper.devstackx.in/api/v1/insta?query=${encodeURIComponent(match)}`;
+            const response = await fetch(api);
+            if (!response.ok) throw new Error("API request failed");
 
-      await react(message, "✅");
-    } catch (error) {
-      console.error("Instagram Download Error:", error.response?.data || error.message);
-      await react(message, "❌");
-      await message.reply("❌ *Failed to download from Instagram. Please try again later.*");
+            const result = await response.json();
+            if (!result.status || !result.data || !result.data.length) {
+                return await message.reply("*_Failed to fetch the video. Please try another link_*");
+            }
+
+            const videoData = result.data.find(item => item.type === "video");
+            if (!videoData) {
+                return await message.reply("*_No video found in the provided link_*");
+            }
+
+            const { url: dl, thumbnail } = videoData;
+            await message.reply(`*_Downloading..._*`);
+            await message.client.sendMessage(
+                message.jid,
+                {
+                    video: { url: dl },
+                    caption: "Here is your Instagram video",
+                    mimetype: "video/mp4",
+                    thumbnail: await (await fetch(thumbnail)).buffer(),
+                },
+                { quoted: message.data }
+            );
+        } catch (error) {
+            console.error("Error:", error);
+            await message.reply("*_An error occurred while processing your request. Try again later_*");
+        }
     }
-  }
 );
 
-// Function to get JSON data
-async function getJson(url) {
-    try {
-        const response = await axios.get(url);
-        return response.data;
-    } catch (err) {
-        throw new Error("API error");
-    }
-}
 
 // MAIN COMMANDS
 // XNXX Command
