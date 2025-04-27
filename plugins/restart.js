@@ -6,6 +6,6 @@ command({
   desc: 'Restart the bot',
   type: 'system',
 }, async (message) => {
-  await message.reply('♻️ Restarting bot...');
+  await message.reply(' Restarting bot...');
   process.exit(1); 
 });
