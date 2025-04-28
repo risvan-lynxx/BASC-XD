@@ -162,3 +162,63 @@ command({
         await m.reply("Failed to download the Facebook video.");
     }
 });
+
+
+//spotify 
+command({
+  pattern: "spotify ?(.*)",
+  fromMe: isPrivate,
+  desc: "Download Spotify track by URL or search query",
+  type: "downloader",
+}, async (message, match) => {
+  const input = match?.trim();
+
+  if (!input) {
+    await react(message, "❌");
+    return await message.reply("❌ *Please provide a song name or Spotify track URL.*");
+  }
+
+  await react(message, "🔍");
+
+  try {
+    let trackUrl = input;
+
+    // If not a URL, treat as search query
+    if (!input.includes("spotify.com/track/")) {
+      const searchRes = await axios.get(`https://oggy-api.vercel.app/spotify?search=${encodeURIComponent(input)}`);
+      const tracks = searchRes.data?.data;
+
+      if (!tracks || tracks.length === 0) {
+        await react(message, "❌");
+        return await message.reply("❌ No matching Spotify songs found.");
+      }
+
+      trackUrl = tracks[0].link; // Take the first result
+    }
+
+    // Download the track
+    const downloadRes = await axios.get(`https://oggy-api.vercel.app/dspotify?url=${encodeURIComponent(trackUrl)}`);
+    const song = downloadRes.data?.data;
+
+    if (!downloadRes.data.status || !song?.download) {
+      await react(message, "❌");
+      return await message.reply("❌ Could not download the track. Try another one.");
+    }
+
+    await react(message, "⬇️");
+
+    await message.sendFromUrl(song.download, {
+      mimetype: "audio/mpeg",
+      fileName: `${song.title}.mp3`,
+      quoted: message,
+      caption: `🎶 *${song.title}*\n👤 ${song.artis}`
+    });
+
+    await react(message, "✅");
+
+  } catch (err) {
+    console.error("Spotify command error:", err.message);
+    await react(message, "❌");
+    await message.reply("❌ Failed to process your request.");
+  }
+});
