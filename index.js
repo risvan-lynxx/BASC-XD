@@ -129,11 +129,11 @@ async function Zenox() {
       console.log("Plugins Loaded ✅");
 
       const readMore = String.fromCharCode(8206).repeat(4001);
-      const str = `*ʙʀɪᴀᴛᴏ ꜱᴛᴀʀᴛᴇᴅ* ${readMore}\n\n\n*𝚅𝙴𝚁𝚂𝙸𝙾𝙽*   : *${require("./package.json").version}* \n*𝙿𝙻𝚄𝙶𝙸𝙽𝚂*  : *${events.commands.length}* \n*𝙼𝙾𝙳𝙴*  : *${config.WORK_TYPE}* \n*𝙷𝙰𝙽𝙳𝙻𝙴𝚁*  : *${config.HANDLERS}*`;
+      const str = `*ʙʀɪꜱᴛᴏ ꜱᴛᴀʀᴛᴇᴅ* ${readMore}\n\n\n*𝚅𝙴𝚁𝚂𝙸𝙾𝙽*   : *${require("./package.json").version}* \n*𝙿𝙻𝚄𝙶𝙸𝙽𝚂*  : *${events.commands.length}* \n*𝙼𝙾𝙳𝙴*  : *${config.WORK_TYPE}* \n*𝙷𝙰𝙽𝙳𝙻𝙴𝚁*  : *${config.HANDLERS}*`;
 
-      if (conn.user?.id) {
+      if (conn.user?.id) 
         conn.sendMessage(conn.user.id, { text: str });
-      }
+      
 
       try {
         conn.ev.on("creds.update", saveCreds);
