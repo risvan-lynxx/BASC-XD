@@ -198,4 +198,4 @@ async function Zenox() {
 
 setTimeout(() => {
   Zenox();
-}, 3000);
+}, 8000);
