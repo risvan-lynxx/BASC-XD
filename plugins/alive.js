@@ -4,7 +4,7 @@ const config = require("../config");
 // lynx 
 
 let title = " 𝗛𝗲𝘆 𝐙ᴇɴ 𝗶𝘀 𝗔𝗹𝗶𝘃𝗲🧚‍♂️"
-let body = "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃"
+let body = "𝐙𝐄𝐍 𝐗𝐃㋰"
 let sourceUrl = ""
 let mediaUrl = ""
 let mediaType = 1
