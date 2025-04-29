@@ -1,4 +1,4 @@
-const {
+ const {
   command,
   isPrivate,
 } = require("../lib/");
