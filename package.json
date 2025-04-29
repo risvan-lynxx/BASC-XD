@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Godzenox00/NEZUKO-MD.git"
+    "url": "git+https://github.com/risvan-lynxx/BASC-XD.git"
   },
   "keywords": [
     "bot",
@@ -22,9 +22,9 @@
   "developer": "Lynx",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/Godzenox00/NEZUKO-MD/issues"
+    "url": "https://github.com/risvan-lynxx/BASC-XD/issues"
   },
-  "homepage": "https://github.com/Godzenox00/NEZUKO-MD#readme",
+  "homepage": "https://github.com/risvan-lynxx/BASC-XD#readme",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.12",
     "@adiwajshing/keyed-db": "^0.2.4",
