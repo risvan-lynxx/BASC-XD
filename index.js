@@ -89,7 +89,7 @@ async function Zenox() {
     const { connection, lastDisconnect } = s;
 
     if (connection === "connecting") {
-      console.log("bristo\nVerifying Session...");
+      console.log("Zen\nVerifying Session...");
     }
 
     if (connection === "close" && lastDisconnect?.error?.output?.statusCode !== 401) {
@@ -98,7 +98,7 @@ async function Zenox() {
     }
 
     if (connection === "open") {
-      console.log("Bristo Connected To Whatsapp ✅\nLoading Plugins 🛠️");
+      console.log("Zen Connected To Whatsapp ✅\nLoading Plugins 🛠️");
 
       try {
         let plugins = await PluginDB.findAll();
