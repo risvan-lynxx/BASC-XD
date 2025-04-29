@@ -16,4 +16,4 @@ command(
     if (result && result.exists) return await message.reply("*" + match + " exists on WhatsApp*,\njid: " + result.jid)
   );
   }
-);*/
+);
