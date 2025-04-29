@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: BRISTO-XD
+    name: ZEN-XD
     env: node
     branch: main
     repo: https://github.com/risvan-lynxx/BASC-XD.git
@@ -12,13 +12,13 @@ services:
       - key: SESSION_ID
         sync: false
       - key: BOT_INFO
-        value: 𝙱𝚁𝙸𝚂𝚃𝙾;𝙻𝚈𝙽𝚇;https://files.catbox.moe/yvt6ld.png
+        value: 𝐳𝐞𝐧 𝐱𝐝;𝙻𝚈𝙽𝚇;https://files.catbox.moe/yvt6ld.png
       - key: ALWAYS_ONLINE
         value: true
       - key: AUTO_STATUS_VIEWS
         value: true
       - key: AUDIO_DATA
-        value: 𝙻𝚈𝙽𝚇;𝙱𝚁𝙸𝚂𝚃𝙾 𝚇𝙳;https://files.catbox.moe/yvt6ld.png
+        value: 𝙻𝚈𝙽𝚇;𝚉𝙴𝙽 𝚇𝙳;https://files.catbox.moe/yvt6ld.png
       - key: PREFIX
         value: ^
       - key: WORK_TYPE
@@ -26,9 +26,9 @@ services:
       - key: SERVER
         value: render
       - key: CAPTION
-        value: 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🤍
+        value: 𝐙𝐞𝐧𝐡𝐡 𝐗𝐃🤍
       - key: STICKER_DATA
-        value: Lynx;bristo
+        value: ʟʏɴx;ᴢᴇɴ xᴅ
       - key: SUDO
         value: 918138898059
       - key: SERVERURL
