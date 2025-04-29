@@ -1,7 +1,7 @@
 {
   "name": "ZEN-XD",
   "version": "1.0.0",
-  "description": "ZEN-XD simple multi device WhatsApp Bot.",
+  "description": "ZENN-XD simple multi device WhatsApp Bot.",
   "main": "./index.js",
   "type": "commonjs",
   "scripts": {
