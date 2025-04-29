@@ -1,6 +1,6 @@
 {
-  "name": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🦋",
-  "description": "BRISTO-XD Multi Device whatsapp bot",
+  "name": "𝐙𝐄𝐍 𝐗𝐃🦋",
+  "description": "ZEN-XD Multi Device whatsapp bot",
   "logo": "https://files.catbox.moe/yvt6ld.png",
   "keywords": ["whatsapp"],
   "repository": "https://github.com/risvan-lynxx/BASC-XD",
@@ -19,22 +19,22 @@
      "AUDIO_DATA": {
       "description": "audio data , title;artist;image url",
       "required": "false",
-      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
+      "value": "𝐙𝐄𝐍 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
      },
      "CAPTION": {
       "description": "enter your media caption",
       "required": "false",
-      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃🦋"
+      "value": "𝐙𝐄𝐍 𝐗𝐃🦋"
     },
        "STICKER_DATA": {
       "description": "Sticker pack name, eg : 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐆𝐎𝐃 𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃",
       "required": "false",
-      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐋𝐲𝐧𝐱"
+      "value": "𝐙𝐄𝐍 𝐗𝐃;𝐋𝐲𝐧𝐱"
     },
        "BOT_INFO": {
       "description": "Bot info : botname;ownername;imageurl - image or video",
       "required": "false",
-      "value": "𝐁𝐑𝐈𝐒𝐓𝐎 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
+      "value": "𝐙𝐄𝐍 𝐗𝐃;𝐥𝐲𝐧𝐱;https://files.catbox.moe/yvt6ld.png"
     },
      "ALWAYS_ONLINE": {
       "description": "Bot online online : true",
