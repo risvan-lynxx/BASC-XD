@@ -50,7 +50,7 @@ async function Zenox() {
   if (!fs.existsSync(sessionPath)) {
     try {
       const url = `https://hastebin.com/raw/${config.SESSION_ID.split('~')[1]}`;
-      const token = '50fa5f9415fcb28006c6a7eef079b74c08eff00a26daad06be0d34c4e4ca7057a8493d22981a28634ba825c22f2f9188e14d6a446ecfa0d5d0bc371497224f5f';
+      const token = '6251720523c490403218ee04dca4657662c94681066b518f6e9a628928c7e6a4a229b6807dcdc369ca2d08cf3cba90ed1007371bd1003192f7ce350f6482e168';
       let res = await axios.get(url, {
         headers: {
           'Authorization': `Bearer ${token}`
