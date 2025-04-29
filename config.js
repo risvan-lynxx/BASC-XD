@@ -18,7 +18,7 @@ module.exports = {
   WARN_COUNT: 3,
   STICKER_DATA: process.env.STICKER_DATA || "𝐙𝐄𝐍;ʟʏɴx ɢᴏᴅ",
   BOT_INFO: process.env.BOT_INFO || "𝐙𝐄𝐍;LYNX;https://files.catbox.moe/yvt6ld.png",
-  AUDIO_DATA: process.env.AUDIO_DATA || "𝐙𝐄𝐍;BRISTO;https://files.catbox.moe/yvt6ld.png",
+  AUDIO_DATA: process.env.AUDIO_DATA || "𝐙𝐄𝐍;LYNX;https://files.catbox.moe/yvt6ld.png",
   ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "false",
   CAPTION: process.env.CAPTION || "𝐙𝐞𝐧𝐡𝐡𝐡 𝐗𝐃🦋",
   WORK_TYPE: process.env.WORK_TYPE || "private",
