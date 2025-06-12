@@ -18,6 +18,13 @@
     <br>
 <a href='https://nextro-web.vercel.app/deploy' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=render&logoColor=white'/></a>
 
+### 2. To Run Zen Bot 24×7
+    
+ Use uptimer 
+ https://uptimerobot.com/
+
+Create a moniter.
+   
 
 _BOT UPDATE_
 
